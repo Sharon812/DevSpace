@@ -35,8 +35,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser(response.data.user);
   };
 
+  const logout = async () => {
+    await api.post("/auth/logout");
+
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
