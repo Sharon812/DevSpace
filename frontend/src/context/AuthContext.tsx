@@ -1,39 +1,20 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
-
+import { useEffect, useState, type ReactNode } from "react";
 import api from "../services/api";
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
-interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import { AuthContext, type AuthContextType } from "./AuthContextValue";
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: ReactNode; //telling typescript that children can be react stuff
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  //Manage authentication and provide authentication information to the rest of the application.
+  const [user, setUser] = useState<AuthContextType["user"]>(null); //user = currently logged-in user, initially user = null ;because nobody has been confirmed as logged in yet. then setuser.. changes it
+  const [loading, setLoading] = useState(true); //because nobody has been confirmed as logged in yet.
 
   useEffect(() => {
     const getCurrentUser = async () => {
       try {
         const response = await api.get("/auth/me");
-
         setUser(response.data.user);
       } catch (error) {
         setUser(null);
@@ -45,19 +26,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
     getCurrentUser();
   }, []);
 
+  const login = async (email: string, password: string) => {
+    const response = await api.post("/auth/login", {
+      email,
+      password,
+    });
+
+    setUser(response.data.user);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, login }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
-  const context = useContext(AuthContext);
+//manager on controlling whats inside the box
 
-  if (!context) {
-    throw new Error("useAuth must be used inside AuthProvider");
-  }
-
-  return context;
-}
+//Context = shared state.
+//Provider = supplies/manages that state.
+//Custom hook = convenient way for components to access it.
