@@ -58,15 +58,11 @@ function Landing() {
             <Button
               variant="ghost"
               className="rounded-full text-stone-700 hover:bg-stone-900/[0.05] hover:text-stone-900"
-              asChild
             >
               <Link to="/login">Login</Link>
             </Button>
 
-            <Button
-              className="rounded-full bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_4px_10px_-4px_rgba(194,65,12,0.5)] hover:from-orange-500 hover:to-orange-500"
-              asChild
-            >
+            <Button className="rounded-full bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_4px_10px_-4px_rgba(194,65,12,0.5)] hover:from-orange-500 hover:to-orange-500">
               <Link to="/register">Get started</Link>
             </Button>
           </div>
@@ -103,7 +99,6 @@ function Landing() {
             <Button
               size="lg"
               className="rounded-full bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_8px_20px_-6px_rgba(194,65,12,0.55)] hover:from-orange-500 hover:to-orange-500"
-              asChild
             >
               <Link to="/register">Get started</Link>
             </Button>
@@ -112,7 +107,6 @@ function Landing() {
               size="lg"
               variant="outline"
               className="rounded-full border-stone-900/10 bg-white/70 text-stone-800 shadow-sm backdrop-blur hover:bg-white"
-              asChild
             >
               <a href="https://github.com" target="_blank" rel="noreferrer">
                 View on GitHub
@@ -498,10 +492,7 @@ function Landing() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  className="rounded-full bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_4px_10px_-4px_rgba(194,65,12,0.5)] hover:from-orange-500 hover:to-orange-500"
-                  asChild
-                >
+                <Button className="rounded-full bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_4px_10px_-4px_rgba(194,65,12,0.5)] hover:from-orange-500 hover:to-orange-500">
                   <a href="https://github.com" target="_blank" rel="noreferrer">
                     View source on GitHub
                   </a>
@@ -510,7 +501,6 @@ function Landing() {
                 <Button
                   variant="outline"
                   className="rounded-full border-stone-900/10 hover:bg-stone-900/[0.03]"
-                  asChild
                 >
                   <Link to="/register">Try DevSpace</Link>
                 </Button>
