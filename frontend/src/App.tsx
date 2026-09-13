@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   return (
@@ -13,9 +14,12 @@ function App() {
       <Routes>
         {/*  Public routes*/}
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
 
+        {/* guest routes */}
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
