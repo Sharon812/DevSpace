@@ -9,6 +9,8 @@ import authRoutes from "./routes/authRoute.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
+
 app.use(cookieParser());
 
 app.use(
