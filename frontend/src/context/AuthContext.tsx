@@ -26,6 +26,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
     getCurrentUser();
   }, []);
 
+  const register = async (name: string, email: string, password: string) => {
+    const response = await api.post("/auth/register", {
+      name,
+      email,
+      password,
+    });
+
+    setUser(response.data.user);
+
+    return response.data;
+  };
+
   const login = async (email: string, password: string) => {
     const response = await api.post("/auth/login", {
       email,
@@ -42,7 +54,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   );

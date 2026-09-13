@@ -20,13 +20,34 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
 
+    if (!email.trim() || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
     try {
+      setIsLoading(true);
+
       await login(email, password);
       navigate("/dashboard");
-    } catch (error) {
+    } catch (error: any) {
+      const message =
+        error?.response?.data?.message ||
+        "Something went wrong. Please try again.";
+
+      setError(message);
+
       console.log(error);
     }
   };
@@ -103,7 +124,15 @@ function Login() {
                   className="h-11 rounded-xl border-stone-900/10 bg-[#FBF9F5] px-3.5 text-stone-900 placeholder:text-stone-400 focus-visible:border-orange-400 focus-visible:ring-orange-400/20"
                 />
               </div>
-
+              {/* Error */}
+              {error && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-sm text-red-600"
+                >
+                  {error}
+                </div>
+              )}
               <Button
                 type="submit"
                 className="h-11 w-full rounded-xl bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_8px_20px_-6px_rgba(194,65,12,0.5)] transition-all hover:from-orange-500 hover:to-orange-500 hover:shadow-[0_4px_20px_-6px_rgba(194,65,12,0.55)]"

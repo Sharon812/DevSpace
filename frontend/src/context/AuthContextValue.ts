@@ -4,6 +4,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  avatar: string;
 }
 
 export interface AuthContextType {
@@ -11,6 +12,7 @@ export interface AuthContextType {
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  register: (name: string, email: string, password: string) => Promise<unknown>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(

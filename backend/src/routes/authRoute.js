@@ -4,6 +4,7 @@ import {
   login,
   getMe,
   logout,
+  register,
 } from "../controllers/authController.js";
 import protectApis from "../middlewares/authMiddleware.js";
 
@@ -13,5 +14,6 @@ router.post("/register", registerUser);
 router.post("/login", login);
 router.get("/me", protectApis, getMe);
 router.post("/logout", logout);
+router.post("/register", register);
 
 export default router;
