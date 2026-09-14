@@ -98,6 +98,7 @@ function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-11 rounded-xl border-stone-900/10 bg-[#FBF9F5] px-3.5 text-stone-900 placeholder:text-stone-400 focus-visible:border-orange-400 focus-visible:ring-orange-400/20"
+                  disabled={isLoading}
                 />
               </div>
 
@@ -121,6 +122,7 @@ function Login() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  disabled={isLoading}
                   className="h-11 rounded-xl border-stone-900/10 bg-[#FBF9F5] px-3.5 text-stone-900 placeholder:text-stone-400 focus-visible:border-orange-400 focus-visible:ring-orange-400/20"
                 />
               </div>
