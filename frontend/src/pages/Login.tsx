@@ -49,6 +49,8 @@ function Login() {
       setError(message);
 
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -137,9 +139,10 @@ function Login() {
               )}
               <Button
                 type="submit"
+                disabled={isLoading}
                 className="h-11 w-full rounded-xl bg-gradient-to-b from-orange-500 to-orange-600 text-white shadow-[0_1px_2px_rgba(194,65,12,0.3),0_8px_20px_-6px_rgba(194,65,12,0.5)] transition-all hover:from-orange-500 hover:to-orange-500 hover:shadow-[0_4px_20px_-6px_rgba(194,65,12,0.55)]"
               >
-                Sign in
+                {isLoading ? "Signing in..." : "Sign in"}
               </Button>
             </form>
 
