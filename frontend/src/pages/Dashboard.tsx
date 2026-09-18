@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/useAuth";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,7 +16,7 @@ import {
   BarChart3,
   Users,
   ArrowRight,
-  LogOut,
+  // LogOut,
   Sparkles,
 } from "lucide-react";
 
@@ -64,17 +64,17 @@ const upcomingFeatures = [
 ];
 
 function Dashboard() {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { user } = useAuth();
+  // const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    await logout();
-    navigate("/login");
-  };
+  // const handleLogout = async () => {
+  //   await logout();
+  //   navigate("/login");
+  // };
 
   return (
     <main className="min-h-screen bg-[#FBF9F5] text-stone-900">
-      <nav className="sticky top-0 z-50 border-b border-stone-900/[0.06] bg-[#FBF9F5]/85 backdrop-blur-xl">
+      {/* <nav className="sticky top-0 z-50 border-b border-stone-900/[0.06] bg-[#FBF9F5]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
           <button
             type="button"
@@ -93,9 +93,9 @@ function Dashboard() {
             Logout
           </Button>
         </div>
-      </nav>
+      </nav> */}
 
-      <section className="relative overflow-hidden px-6 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-24">
+      <section className="relative overflow-hidden px-6 pb-20 lg:px-8 lg:pb-28 ">
         {/* Soft warm atmosphere */}
         <div
           aria-hidden="true"
