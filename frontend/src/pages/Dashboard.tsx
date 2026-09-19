@@ -190,7 +190,7 @@ function Dashboard() {
             </div>
 
             <a
-              href="https://github.com"
+              href="https://github.com/Sharon812/DevSpace"
               target="_blank"
               rel="noreferrer"
               className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-stone-900/10 bg-white px-4 py-2 text-sm font-medium text-stone-900 shadow-xs transition-colors hover:bg-stone-900/[0.03]"
