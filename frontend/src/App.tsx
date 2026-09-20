@@ -7,6 +7,7 @@ import Landing from "./pages/Landing";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
+import AppLayout from "./layouts/AppLayout";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
         </Route>
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
